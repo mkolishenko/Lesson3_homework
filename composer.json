@@ -1,0 +1,9 @@
+{
+    "name": "maksym/homework",
+    "description": "This is demo project",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "symfony/yaml": "^4.2"
+    }
+}
