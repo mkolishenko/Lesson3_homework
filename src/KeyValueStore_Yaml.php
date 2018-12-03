@@ -39,7 +39,7 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
 
     public function has($key): bool
     {
-        $file_content = Yaml::parseFile($this->file);
+        $rez = Yaml::parseFile($this->file);
         if (isset ($rez[$key]))
             return true;
         return false;
@@ -47,22 +47,17 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
 
     public function remove($key)
     {
-        $file_content = Yaml::parseFile($this->file);
+        $rez = Yaml::parseFile($this->file);
         if (isset ($rez[$key])){
             unset($rez[$key]);
-            return true;
         }
-        return false;
+        file_put_contents($this->file,Yaml::dump(($rez)));
     }
 
     public function clear()
     {
-        $file_content = Yaml::parseFile($this->file);
-        if (isset ($rez[$key])){
-            $rez[$key] ='';
-            return true;
-        }
-        return false;
+        $rez = [];
+        file_put_contents($this->file,Yaml::dump(($rez)));
     }
 
 }
