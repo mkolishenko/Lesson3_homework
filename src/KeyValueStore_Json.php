@@ -8,6 +8,10 @@
 
 final class KeyValueStore_Json implements KeyValueStoreInterface
 {
+
+    /**
+     * @var string filepath of data for saving
+     */
     protected $file = '';
 
     public function __construct()
@@ -19,6 +23,12 @@ final class KeyValueStore_Json implements KeyValueStoreInterface
         }
     }
 
+    /**
+     * Set value identified by key
+     *
+     * @param string $key
+     * @param mixed $value
+     */
     public function set($key, $value)
     {
         $rez = json_decode(file_get_contents($this->file), true);
@@ -28,37 +38,61 @@ final class KeyValueStore_Json implements KeyValueStoreInterface
         // TODO: Implement set() method.
     }
 
+    /**
+     * Get value identified by Key
+     *
+     * @param string $key
+     * @param null $default
+     *
+     * @return mixed|null
+     */
     public function get($key, $default = null)
     {
         $rez = json_decode(file_get_contents($this->file), true);
-        if (isset ($rez[$key]))
+        if (isset($rez[$key])) {
             return $rez[$key];
+        }
         return null;
     }
 
+    /**
+     * Check for exists value identified by key
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
     public function has($key): bool
     {
         $rez = json_decode(file_get_contents($this->file), true);
-        if (isset ($rez[$key]))
+        if (isset($rez[$key])) {
             return true;
+        }
         return false;
     }
 
+    /**
+     * Removes value identified by key
+     *
+     * @param string $key
+     */
     public function remove($key)
     {
         $rez = json_decode(file_get_contents($this->file), true);
-        if (isset ($rez[$key])){
+        if (isset($rez[$key])) {
             unset($rez[$key]);
         }
         $json_data = json_encode($rez);
         file_put_contents($this->file, $json_data);
     }
 
+    /**
+     * Erase array of data
+     */
     public function clear()
     {
         $rez = [];
         $json_data = json_encode($rez);
         file_put_contents($this->file, $json_data);
     }
-
 }

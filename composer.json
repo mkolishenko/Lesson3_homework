@@ -1,9 +1,12 @@
 {
-    "name": "maksym/homework",
-    "description": "This is demo project",
+    "name": "maksym/datastorage",
     "type": "project",
     "license": "MIT",
-    "require": {
-        "symfony/yaml": "^4.2"
-    }
+    "authors": [
+        {
+            "name": "Maksym",
+            "email": "mkolishenko@gmail.com"
+        }
+    ],
+    "require": {}
 }

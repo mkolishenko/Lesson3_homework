@@ -11,6 +11,9 @@ use Symfony\Component\Yaml\Yaml;
 
 final class KeyValueStore_Yaml implements KeyValueStoreInterface
 {
+    /**
+     * @var string filepath of data for saving
+     */
     protected $file = '';
 
     public function __construct()
@@ -22,42 +25,72 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
         }
     }
 
+    /**
+     * Set value identified by key
+     *
+     * @param string $key
+     * @param mixed $value
+     */
     public function set($key, $value)
     {
         $file_content = Yaml::parseFile($this->file);
         $file_content[$key] = $value;
-        file_put_contents($this->file,Yaml::dump(($file_content)));
+        file_put_contents($this->file, Yaml::dump(($file_content)));
     }
 
+    /**
+     * Get value identified by key
+     *
+     * @param string $key
+     * @param null $default
+     *
+     * @return mixed|null
+     */
     public function get($key, $default = null)
     {
         $rez = Yaml::parseFile($this->file);
-        if (isset ($rez[$key]))
-        return $rez[$key];
+        if (isset($rez[$key])) {
+            return $rez[$key];
+        }
         return null;
     }
 
+    /**
+     * Check for exists value identified by key
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
     public function has($key): bool
     {
         $rez = Yaml::parseFile($this->file);
-        if (isset ($rez[$key]))
+        if (isset($rez[$key])) {
             return true;
+        }
         return false;
     }
 
+    /**
+     * Removes value identified by key
+     *
+     * @param string $key
+     */
     public function remove($key)
     {
         $rez = Yaml::parseFile($this->file);
-        if (isset ($rez[$key])){
+        if (isset($rez[$key])) {
             unset($rez[$key]);
         }
-        file_put_contents($this->file,Yaml::dump(($rez)));
+        file_put_contents($this->file, Yaml::dump(($rez)));
     }
 
+    /**
+     * Erase array of data
+     */
     public function clear()
     {
         $rez = [];
-        file_put_contents($this->file,Yaml::dump(($rez)));
+        file_put_contents($this->file, Yaml::dump(($rez)));
     }
-
 }
