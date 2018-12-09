@@ -24,7 +24,7 @@ final class KeyValueStore_Array implements KeyValueStoreInterface
      * @param string $key
      * @param mixed $value
      */
-    public function set($key, $value)
+    public function set(string $key,$value)
     {
         $this->vArray[$key] = $value;
     }
@@ -37,7 +37,7 @@ final class KeyValueStore_Array implements KeyValueStoreInterface
      *
      * @return mixed|null
      */
-    public function get($key, $default = null)
+    public function get(string $key, $default = null)
     {
         if (isset($this->vArray[$key])) {
             return $this->vArray[$key];
@@ -52,7 +52,7 @@ final class KeyValueStore_Array implements KeyValueStoreInterface
      *
      * @return bool
      */
-    public function has($key): bool
+    public function has(string $key): bool
     {
         if (isset($this->vArray[$key])) {
             return true;
@@ -65,7 +65,7 @@ final class KeyValueStore_Array implements KeyValueStoreInterface
      *
      * @param string $key
      */
-    public function remove($key)
+    public function remove(string $key)
     {
         if (isset($this->vArray[$key])) {
             unset($this->vArray[$key]);

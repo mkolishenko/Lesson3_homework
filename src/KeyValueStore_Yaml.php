@@ -31,7 +31,7 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
      * @param string $key
      * @param mixed $value
      */
-    public function set($key, $value)
+    public function set(string $key, $value)
     {
         $file_content = Yaml::parseFile($this->file);
         $file_content[$key] = $value;
@@ -46,7 +46,7 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
      *
      * @return mixed|null
      */
-    public function get($key, $default = null)
+    public function get(string $key, $default = null)
     {
         $rez = Yaml::parseFile($this->file);
         if (isset($rez[$key])) {
@@ -62,7 +62,7 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
      *
      * @return bool
      */
-    public function has($key): bool
+    public function has(string $key): bool
     {
         $rez = Yaml::parseFile($this->file);
         if (isset($rez[$key])) {
@@ -76,7 +76,7 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
      *
      * @param string $key
      */
-    public function remove($key)
+    public function remove(string $key)
     {
         $rez = Yaml::parseFile($this->file);
         if (isset($rez[$key])) {

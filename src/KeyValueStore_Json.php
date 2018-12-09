@@ -29,13 +29,12 @@ final class KeyValueStore_Json implements KeyValueStoreInterface
      * @param string $key
      * @param mixed $value
      */
-    public function set($key, $value)
+    public function set(string $key, $value)
     {
         $rez = json_decode(file_get_contents($this->file), true);
         $rez [$key] = $value;
         $json_data = json_encode($rez);
         file_put_contents($this->file, $json_data);
-        // TODO: Implement set() method.
     }
 
     /**
@@ -46,7 +45,7 @@ final class KeyValueStore_Json implements KeyValueStoreInterface
      *
      * @return mixed|null
      */
-    public function get($key, $default = null)
+    public function get(string $key, $default = null)
     {
         $rez = json_decode(file_get_contents($this->file), true);
         if (isset($rez[$key])) {
@@ -62,7 +61,7 @@ final class KeyValueStore_Json implements KeyValueStoreInterface
      *
      * @return bool
      */
-    public function has($key): bool
+    public function has(string $key): bool
     {
         $rez = json_decode(file_get_contents($this->file), true);
         if (isset($rez[$key])) {
@@ -76,7 +75,7 @@ final class KeyValueStore_Json implements KeyValueStoreInterface
      *
      * @param string $key
      */
-    public function remove($key)
+    public function remove(string $key)
     {
         $rez = json_decode(file_get_contents($this->file), true);
         if (isset($rez[$key])) {
