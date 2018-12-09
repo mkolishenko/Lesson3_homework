@@ -6,7 +6,7 @@
  * Time: 12:33
  */
 
-final class KeyValueStore_Array implements KeyValueStoreInterface
+final class KeyValueStoreArray implements KeyValueStoreInterface
 {
     /**
      * @var array data for saving

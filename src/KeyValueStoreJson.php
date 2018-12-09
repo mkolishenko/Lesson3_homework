@@ -6,7 +6,7 @@
  * Time: 11:42
  */
 
-final class KeyValueStore_Json implements KeyValueStoreInterface
+final class KeyValueStoreJson implements KeyValueStoreInterface
 {
 
     /**
@@ -16,7 +16,7 @@ final class KeyValueStore_Json implements KeyValueStoreInterface
 
     public function __construct()
     {
-        $this->file =__DIR__.'/../uploads/data.json';
+        $this->file = __DIR__ . '/../data/data.json';
 
         if (!file_exists($this->file)) {
             throw new \LogicException(sprintf("The file '%s' does not exist", $this->file));

@@ -9,7 +9,7 @@ require_once __DIR__ . '/KeyValueStoreInterface.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Yaml\Yaml;
 
-final class KeyValueStore_Yaml implements KeyValueStoreInterface
+final class KeyValueStoreYaml implements KeyValueStoreInterface
 {
     /**
      * @var string filepath of data for saving
@@ -18,7 +18,7 @@ final class KeyValueStore_Yaml implements KeyValueStoreInterface
 
     public function __construct()
     {
-        $this->file =__DIR__.'/../uploads/data.yml';
+        $this->file = __DIR__ . '/../data/data.yml';
 
         if (!file_exists($this->file)) {
             throw new \LogicException(sprintf("The file '%s' does not exist", $this->file));

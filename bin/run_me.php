@@ -1,14 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-  require_once  __DIR__.'/../src/KeyValueStore_Yaml.php';
-  require_once  __DIR__.'/../src/KeyValueStore_Json.php';
-  require_once  __DIR__.'/../src/KeyValueStore_Array.php';
+  require_once  __DIR__.'/../src/KeyValueStoreYaml.php';
+  require_once  __DIR__.'/../src/KeyValueStoreJson.php';
+  require_once  __DIR__.'/../src/KeyValueStoreArray.php';
 
   $key = 3;
   $value = 'New_ONE';
 // ------------ Yml section --------------------------------------------------
-  $yaml = new KeyValueStore_Yaml();
+  $yaml = new KeyValueStoreYaml();
   $yaml->set($key, $value);
   if ($yaml->has($key)) {
       printf("YML Value %s from file \n", $yaml->get($key));
@@ -21,7 +21,7 @@
 
 
 // ------------ Json section --------------------------------------------------
-  $json = new  KeyValueStore_Json();
+  $json = new  KeyValueStoreJson();
   $json -> set($key, $value);
   if ($json->has($key)) {
       printf("JSON Value %s from file \n", $json->get($key));
@@ -33,7 +33,7 @@
 
 
 // ------------ Array section --------------------------------------------------
-  $varray = new  KeyValueStore_Array();
+  $varray = new  KeyValueStoreArray();
   $varray -> set($key, $value);
 //  $varray ->remove($key);
   if ($varray->has($key)) {
